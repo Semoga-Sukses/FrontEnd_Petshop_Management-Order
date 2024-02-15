@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapus Produk</title>
+    <link rel = "icon" type = "image/x-icon" href = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ficon%2Fbin_484662&psig=AOvVaw1sy7V0XB7dreLa0YV9Fce2&ust=1708089782413000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMiU2re4rYQDFQAAAAAdAAAAABAJ">
+</head>
+<style>
+    .title {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 1cm;
+        color: orange;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <h1 class = "title"> Keranjang </h1> 
+        <form style = "margin:1cm">
+            <label for = "name", class = subtitle> Id Produk </label>
+            <br>
+            <input
+                id = "id"
+                type = "text">
+                <br><br>
+            <label for = "name", class = subtitle> Nama Produk </label>
+            <br>
+            <input
+                id = "name"
+                type = "text">
+                <br><br>
+            <input type="submit" value="Delete" style = "color: red">
+        </form>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const input = document.querySelector("#name");
+      input.oninput = function () {
+        id = input.value;
+        console.log(id);
+      };
+
+      form.onsubmit = function () {
+        fetch('https://ea1a-125-164-19-28.ngrok-free.app/checkout/3', {
+          method: "DELETE",
+        })
+
+          .then((res) => res.json())
+          .then((json) => console.log(json));
+        return false;
+      };
+    });
+  </script>
+</html>

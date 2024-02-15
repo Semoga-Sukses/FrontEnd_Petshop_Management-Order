@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Order</title>
+    <link rel = "icon" type = "image/x-icon" href = "https://tse1.mm.bing.net/th?id=OIP.wNULHZgGy7kwB3Rdq4hF3AHaHa&pid=Api&P=0&h=180">
+    <link rel = "stylesheet" href = "cart_style.css">
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <header>
+        <div class = "navbar">
+            <div class = "logo"><img src = "logo2.png" title = "logo petshop"></div>
+            <ul class = "links">
+                <li><a href = "home">Home</a></li>
+                <li><a href = "product">Product</a></li>
+                <li><a href = "about">About</a></li>
+            </ul>
+            <a href = "#" class = "action_button">Menu</a>
+            </div>
+        </div>
+    </header>
+
+    <content>
+        <h1 class = "title"> Keranjang </h1>
+        <div id = "product">
+            <div class = "card">
+                <img src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.britishgram.com%2Fproducts%2Fwhiskas-chicken-in-jelly-wet-adult-cat-food-pouches&psig=AOvVaw0R9ybCqrTCeBa0J9X44wAo&ust=1708067016330000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCLjVm8_jrIQDFQAAAAAdAAAAABAN" style="width:100%">
+                <ul class = "product-name"></ul>
+                <p class = "quantity">Jumlah: 6</p>
+                <h5 class = "price">Rp30000</h5>
+                <p><button>Delete Product</button></p>
+            </div>
+            <div class = "card">
+                <img src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpetshopindonesia.com%2Fproduct%2Fcat-it-play-circuit-ball-with-catnip-massager-mainan-kucing%2F&psig=AOvVaw2gljCvqvhq6WJHOHpo5RQF&ust=1708068445564000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOjI7PjorIQDFQAAAAAdAAAAABAQ" style="width:100%">
+                <ul class = "product-name"></ul>
+                <p class = "quantity">Jumlah: 2</p>
+                <h5 class = "price">Rp5000</h5>
+                <p><button>Delete Product</button></p>
+            </div>
+            <div class = "card">
+                <img src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pawsomecouture.com%2Fproducts%2Fleather-cat-collar&psig=AOvVaw23qvzcWwBccp0-Pa-CvLKd&ust=1708068221792000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMihjI7orIQDFQAAAAAdAAAAABAE" style="width:100%">
+                <ul class = "product-name"></ul>
+                <p class = "quantity">Jumlah: 6</p>
+                <h5 class = "price">Rp7000</h5>
+                <p><button>Delete Product</button></p>
+            </div>
+        </div>
+    </content>    
+<script>
+    fetch('https://0815-36-80-109-10.ngrok-free.app/checkout', {
+        mode: "cors",
+            method: 'GET',
+            headers: {
+                "ngrok-skip-browser-warning": "true",
+            }
+    })
+   .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        data.forEach(product => {
+            const markup = '<li>${product.name}</li>';
+            document.querySelector('ul').insertAdjecentHTML('beforeend', markup);
+        })
+    })
+</script>
+</body>
+</html>
+
