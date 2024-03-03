@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Produk</title>
+    <link rel = "icon" type = "image/x-icon" href = "https://tse1.mm.bing.net/th?id=OIP.wNULHZgGy7kwB3Rdq4hF3AHaHa&pid=Api&P=0&h=180">
+  </head>
+  <style>
+    .title {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 1cm;
+        color: orange;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .tengah {
+        margin: 1cm;
+    }
+</style>
+<body>
+    <h1 class = "title"> Keranjang </h1> 
+    <form class = "tengah">
+        <label for="id" class = "subtitle">Id Produk</label>
+        <br>
+        <input
+          id="id"
+          type="text">
+          <br><br>  
+        <label for="name" class = "subtitle">Nama Produk</label>
+        <br>
+        <input
+          id="name"
+          type="text" />
+          <br><br>
+        <label for="price" class = "subtitle">Harga</label>
+        <br>
+        <input
+          id="price"
+          type="text" />
+          <br><br>
+      </div>
+        <label for="total" class = "subtitle">Banyak Produk</label>
+        <br>
+        <input
+          id="total"
+          type="text" />
+          <br>
+      </div>
+      <br>
+      <input type="submit" value = "Tambah" style = "font-weight: bold";/>
+    </form>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("https://ea1a-125-164-19-28.ngrok-free.app/checkout")
+        .then((res) => res.json())
+        .then((data) => {
+          const name = document.querySelector("#name");
+          data.forEach((name) => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category;
+            select.appendChild(option);
+          });
+        });
+    });
+    const form = document.querySelector("form");
+    form.onsubmit = function () {
+      const id = document.querySelector("#id").value;
+      const name = document.querySelector("#name").value;
+      const price = document.querySelector("#price").value;
+      const total = document.querySelector("#total").value;
+
+      fetch("https://ea1a-125-164-19-28.ngrok-free.app/checkout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data)
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+
+      return false;
+    };
+  </script>
+</html>
